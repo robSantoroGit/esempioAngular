@@ -12,4 +12,15 @@ script:
 after_success:
   - echo "$DOCKER_PWD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push robesantororobesantoro/esempio_angular
-  
+ 
+deploy:
+  provider: elasticbeanstalk
+  region: 'eu-west-3'
+  app: 'esempio_angular'
+  env: 'Esempioangular-env'
+  bucket_name: 'elasticbeanstalk-eu-west-3-801320686542'
+  bucket_path: 'esempio_angular'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY  
