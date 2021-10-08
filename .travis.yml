@@ -1,0 +1,14 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t robesantororobesantoro/esempio_angular .
+
+script:
+  # qui andrebbero lanciati i test
+
+after_success:
+  - echo "$DOCKER_PWD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push robesantororobesantoro/esempio_angular
