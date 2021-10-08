@@ -12,3 +12,4 @@ script:
 after_success:
   - echo "$DOCKER_PWD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push robesantororobesantoro/esempio_angular
+  
